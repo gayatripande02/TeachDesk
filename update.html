@@ -1,0 +1,113 @@
+<!DOCTYPE html >
+<html lang = "en">
+<head>
+  {% load static %}
+    <meta charset = "UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <link rel = "stylesheet" href = "{% static '/css/create.css' %}">
+    
+    <title> Update page </title>
+</head>
+<body style = "background-color : pink">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/studentapp/home/">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/studentapp/create/">Create <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'display' %}">Display All <span class="sr-only">(current)</span></a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+        </ul>
+        </div>
+      </nav>
+      <br>
+      <div style = "text-align :center ; 
+        padding-top : 50px;
+        padding-right : 80px;
+        padding-bottom : 50px;
+        padding-left : 80px ">
+      <div class="jumbotron">
+        <div class="container register">
+          <div class="row">
+              <div class="col-md-3 register-left">
+                  <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                  <h3>Welcome</h3>
+                  <p>You are 30 seconds away from earning your own money!</p>
+                  <input type="submit" name="" value="Login"/><br/>
+              </div>
+              <div class="col-md-9 register-right">
+                  <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                      
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                          <h3 class="register-heading">Update {{obj.name}} Student Data</h3>
+                          <form action = "/studentapp/update/{{obj.id}}/" method = "post"> {% csrf_token %}
+                          <div class="row register-form">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  ID  <input type="number" class="form-control" name = "id" placeholder="*" value="{{obj.id}}" readonly />
+                              </div>
+                                  <div class="form-group">
+                                     Roll  <input type="number" class="form-control" name = "roll" placeholder="Roll Number *" value="{{obj.roll}}" />
+                                  </div>
+                                  <div class="form-group">
+                                     Name  <input type="text" class="form-control" name = "nm" placeholder="Name *" value="{{obj.name}}" />
+                                  </div>
+                                  <div class="form-group">
+                                     Marks  <input type="number" class="form-control" name = "marks" placeholder="Marks *" value="{{obj.marks}}" />
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="maxl">
+                                          <label class="radio inline"> 
+                                              <input type="radio" name="gender" value="male" checked>
+                                              <span> Male </span> 
+                                          </label>
+                                          <label class="radio inline"> 
+                                              <input type="radio" name="gender" value="female">
+                                              <span>Female </span> 
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <button type = "submit" class = "btn btn-warning"> Update </button>
+                              </div>
+                            </form>  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+      </div>
+    </div>
+</body>
+</html>
